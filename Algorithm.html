@@ -14259,6 +14259,12 @@ a.anchor-link {
 
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p><a href="https://github.com/milad2281">Author: milad2281</a></p>
+
+</div>
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <h1 id="Algorithms">Algorithms<a class="anchor-link" href="#Algorithms">&#182;</a></h1>
 </div>
 </div>
@@ -14281,7 +14287,8 @@ a.anchor-link {
             <li><a href="#mergesort">Merge Sort</a></li>
             <li><a href="#quicksort">Quick Sort</a></li>
             <li><a href="#timsort">Tim Sort</a></li>
-            <li><a href="#noncomparsionsort">non-Comparsion Sort</a></li><br>
+            <li><a href="#noncomparsionsort">non-Comparsion Sort</a></li>
+            <li><a href="#topologicalsort">Topological Sort</a></li><br>
     </ul></li>
     <li><a href="#searching">Searching</a><ul>
             <li><a href="#linearsearch">Linear Search</a></li>
@@ -14291,7 +14298,8 @@ a.anchor-link {
             <li><a href="#weightedsearch">Weighted Methods</a></li>
      </ul></li><br>
     <li><a href="#dynamicpr">Dynamic Programming</a></li><br>
-    <li><a href="#problem">Problem Solving Techniques</a><ul>
+    <li><a href="#problem">Problem Solving Techniques</a>
+        <ul>
             <li><a href="#caching">Caching</a></li>
             <li><a href="#2pointer">2 Pointer Technique</a></li>
             <li><a href="#slidingwindow">Sliding Window</a></li>
@@ -14299,7 +14307,8 @@ a.anchor-link {
             <li><a href="#divideconcquer">Divide & Conquer</a></li>
             <li><a href="#"></a></li>
             <li><a href="#"></a></li>
-     </ul></li><br>
+         </ul>
+    </li><br>
     <li><a href="#references">References</a></li><br>
 </ul>
 </div>
@@ -15131,6 +15140,27 @@ Examples are:<br></p>
 <p>6 - Temperature Records for the past 50 years in Canada:<b> radix or counting quick or sort insertion </b></p>
 <p>7 - Large user name database needs to be sorted. Data is very random.:<b> merge or quick sort</b></p>
 <p>8 - You want to teach sorting for the first time:<b> Bubble, selection sort</b></p>
+
+</div>
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<div id="topologicalsort"></div><h3 id="Topological-Sort">Topological Sort<a class="anchor-link" href="#Topological-Sort">&#182;</a></h3><p><a href="#content">top</a></p>
+
+</div>
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>This sort algorithm is used for Directed Acylic Graphs (DAG)</p>
+<p>It sorts nodes with least Indegrees to the most</p>
+<p>Indegree: indegrees are the incoming vertexes to each node</p>
+<p>How this works is that it first create an indegree list for all nodes. 
+Then we start by removing nodes which have an indegree of 0.
+When removing a node we should also reduce the indegree of all other nodes depending on that.
+We keep going till all nodes have reach indegree of zero and removed.</p>
+<p>Warning: if the graph is not acylic (there is a loop in it) we won't be able to remove all nodes.
+This can also be used to see if there is a loop in a graph
+<br><br><img width=500 src="https://i2.wp.com/techieme.in/wp-content/uploads/ANIMATION.gif"></p>
 
 </div>
 </div>
@@ -16346,8 +16376,22 @@ and storing their solutions in case next time the same sub-problem occurs</p>
 </div>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p><a href="https://en.wikipedia.org/wiki/Timsort">https://en.wikipedia.org/wiki/Timsort</a></p>
-<p><a href="https://www.geeksforgeeks.org/timsort/">https://www.geeksforgeeks.org/timsort/</a></p>
+<h3 id="Instructors">Instructors<a class="anchor-link" href="#Instructors">&#182;</a></h3><ul>
+<li><p>Andrei Neagoie: Master the Coding Interview: Data Structures + Algorithms</p>
+<p><a href="https://academy.zerotomastery.io/p/master-the-coding-interview-data-structures-algorithms">https://academy.zerotomastery.io/p/master-the-coding-interview-data-structures-algorithms</a></p>
+</li>
+</ul>
+<ul>
+<li><p>Yihua Zhang: Master the Coding Interview: Big Tech (FAANG) Interviews</p>
+<p><a href="https://academy.zerotomastery.io/p/master-the-coding-interview-faang-interview-prep">https://academy.zerotomastery.io/p/master-the-coding-interview-faang-interview-prep</a></p>
+</li>
+</ul>
+<h3 id="Aditional-Resources">Aditional Resources<a class="anchor-link" href="#Aditional-Resources">&#182;</a></h3><ul>
+<li><p><a href="https://en.wikipedia.org/wiki/Timsort">https://en.wikipedia.org/wiki/Timsort</a></p>
+</li>
+<li><p><a href="https://www.geeksforgeeks.org/timsort/">https://www.geeksforgeeks.org/timsort/</a></p>
+</li>
+</ul>
 
 </div>
 </div>
