@@ -14287,8 +14287,8 @@ a.anchor-link {
             <li><a href="#mergesort">Merge Sort</a></li>
             <li><a href="#quicksort">Quick Sort</a></li>
             <li><a href="#timsort">Tim Sort</a></li>
-            <li><a href="#noncomparsionsort">non-Comparsion Sort</a></li>
-            <li><a href="#topologicalsort">Topological Sort</a></li><br>
+            <li><a href="#topologicalsort">Topological Sort</a></li>
+            <li><a href="#noncomparsionsort">non-Comparsion Sort</a></li><br>
     </ul></li>
     <li><a href="#searching">Searching</a><ul>
             <li><a href="#linearsearch">Linear Search</a></li>
@@ -15122,6 +15122,98 @@ Space Complexity Big O of n<br></p>
 </div>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<div id="topologicalsort"></div><h3 id="Topological-Sort">Topological Sort<a class="anchor-link" href="#Topological-Sort">&#182;</a></h3><p><a href="#content">top</a></p>
+
+</div>
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>This sort algorithm is used for Directed Acylic Graphs (DAG)</p>
+<p>It sorts nodes with least Indegrees to the most</p>
+<p>Indegree: indegrees are the incoming vertexes to each node</p>
+<p>How this works is that it first create an indegree list for all nodes. 
+Then we start by removing nodes which have an indegree of 0.
+When removing a node we should also reduce the indegree of all other nodes depending on that.
+We keep going till all nodes have reach indegree of zero and removed.</p>
+<p>Warning: if the graph is not acylic (there is a loop in it) we won't be able to remove all nodes.
+This can also be used to see if there is a loop in a graph
+<br><br><img width=500 src="https://i2.wp.com/techieme.in/wp-content/uploads/ANIMATION.gif"></p>
+
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[6]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">nodes</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">],[</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">],[</span><span class="mi">2</span><span class="p">,</span><span class="mi">5</span><span class="p">],[</span><span class="mi">0</span><span class="p">,</span><span class="mi">3</span><span class="p">],[</span><span class="mi">4</span><span class="p">,</span><span class="mi">3</span><span class="p">],[</span><span class="mi">3</span><span class="p">,</span><span class="mi">5</span><span class="p">],[</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">]]</span>
+<span class="k">def</span> <span class="nf">topologicalSort</span><span class="p">(</span><span class="n">numCourses</span><span class="p">,</span> <span class="n">prerequisites</span><span class="p">):</span>
+    <span class="n">lst</span> <span class="o">=</span> <span class="p">[[]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">numCourses</span><span class="p">)]</span>
+    <span class="n">indegree</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">numCourses</span><span class="p">)]</span>
+    <span class="k">for</span> <span class="n">pair</span> <span class="ow">in</span> <span class="n">prerequisites</span><span class="p">:</span>
+        <span class="n">lst</span><span class="p">[</span><span class="n">pair</span><span class="p">[</span><span class="mi">1</span><span class="p">]]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">pair</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+        <span class="n">indegree</span><span class="p">[</span><span class="n">pair</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span><span class="o">+=</span> <span class="mi">1</span>
+        
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Adjacent List: &quot;</span><span class="p">,</span> <span class="n">lst</span><span class="p">)</span>   
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Indegrees:     &quot;</span><span class="p">,</span> <span class="n">indegree</span><span class="p">)</span>
+    <span class="n">sortedList</span> <span class="o">=</span> <span class="p">[]</span>
+    
+    <span class="n">stack</span> <span class="o">=</span> <span class="p">[</span><span class="n">a</span> <span class="k">for</span> <span class="n">a</span><span class="p">,</span><span class="n">b</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">indegree</span><span class="p">)</span> <span class="k">if</span> <span class="n">b</span> <span class="o">==</span> <span class="mi">0</span><span class="p">]</span>
+    <span class="k">while</span> <span class="n">stack</span><span class="p">:</span>
+        <span class="n">v</span><span class="p">,</span> <span class="n">stack</span> <span class="o">=</span> <span class="n">stack</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">stack</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span> 
+        <span class="n">sortedList</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">v</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">lst</span><span class="p">[</span><span class="n">v</span><span class="p">]:</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">indegree</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">-</span><span class="mi">1</span> <span class="o">==</span> <span class="mi">0</span><span class="p">):</span>
+                <span class="n">stack</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+            <span class="n">indegree</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">-=</span> <span class="mi">1</span>
+    <span class="k">return</span> <span class="n">sortedList</span>
+<span class="n">topologicalSort</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="n">nodes</span><span class="p">)</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+<div class="jp-Cell-outputWrapper">
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+
+<div class="jp-OutputArea-child">
+
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
+<pre>Adjacent List:  [[1], [2], [], [0, 4], [], [2, 3, 4]]
+Indegrees:      [1, 1, 2, 1, 2, 0]
+</pre>
+</div>
+</div>
+
+<div class="jp-OutputArea-child">
+
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[6]:</div>
+
+
+
+
+<div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain">
+<pre>[5, 3, 0, 4, 1, 2]</pre>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <div id="noncomparsionsort"></div><h3 id="Non-comparsion-Sort">Non-comparsion Sort<a class="anchor-link" href="#Non-comparsion-Sort">&#182;</a></h3><p><a href="#content">top</a></p>
 <p>uses the way data is stored in memory (binary)<br>
 It works only with integers in a small range
@@ -15146,27 +15238,6 @@ Examples are:<br></p>
 <p>6 - Temperature Records for the past 50 years in Canada:<b> radix or counting quick or sort insertion </b></p>
 <p>7 - Large user name database needs to be sorted. Data is very random.:<b> merge or quick sort</b></p>
 <p>8 - You want to teach sorting for the first time:<b> Bubble, selection sort</b></p>
-
-</div>
-</div>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<div id="topologicalsort"></div><h3 id="Topological-Sort">Topological Sort<a class="anchor-link" href="#Topological-Sort">&#182;</a></h3><p><a href="#content">top</a></p>
-
-</div>
-</div>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p>This sort algorithm is used for Directed Acylic Graphs (DAG)</p>
-<p>It sorts nodes with least Indegrees to the most</p>
-<p>Indegree: indegrees are the incoming vertexes to each node</p>
-<p>How this works is that it first create an indegree list for all nodes. 
-Then we start by removing nodes which have an indegree of 0.
-When removing a node we should also reduce the indegree of all other nodes depending on that.
-We keep going till all nodes have reach indegree of zero and removed.</p>
-<p>Warning: if the graph is not acylic (there is a loop in it) we won't be able to remove all nodes.
-This can also be used to see if there is a loop in a graph
-<br><br><img width=500 src="https://i2.wp.com/techieme.in/wp-content/uploads/ANIMATION.gif"></p>
 
 </div>
 </div>
