@@ -14299,11 +14299,11 @@ a.anchor-link {
      </ul></li><br>
     <li><a href="#dynamicpr">Dynamic Programming</a><ul>
             <li><a href="#bellmanford">Bellman Ford</a></li>
-            <li><a href="#"></a></li>
      </ul></li><br>
-    <li><a href="#greedy">Greedy Method</a><ul>
+     <li><a href="#backtracking">Backtracking</a><ul>
+     </ul></li><br>
+    <li><a href="#greedy">Greedy</a><ul>
             <li><a href="#dijkstra">Dijkstra's Algorithm</a></li>
-            <li><a href="#"></a></li>
      </ul></li><br>
     <li><a href="#problem">Problem Solving Techniques</a>
         <ul>
@@ -15146,7 +15146,7 @@ This can also be used to see if there is a loop in a graph
 <div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[6]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">nodes</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">],[</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">],[</span><span class="mi">2</span><span class="p">,</span><span class="mi">5</span><span class="p">],[</span><span class="mi">0</span><span class="p">,</span><span class="mi">3</span><span class="p">],[</span><span class="mi">4</span><span class="p">,</span><span class="mi">3</span><span class="p">],[</span><span class="mi">3</span><span class="p">,</span><span class="mi">5</span><span class="p">],[</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">]]</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">edges</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">],[</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">],[</span><span class="mi">2</span><span class="p">,</span><span class="mi">5</span><span class="p">],[</span><span class="mi">0</span><span class="p">,</span><span class="mi">3</span><span class="p">],[</span><span class="mi">4</span><span class="p">,</span><span class="mi">3</span><span class="p">],[</span><span class="mi">3</span><span class="p">,</span><span class="mi">5</span><span class="p">],[</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">]]</span>
 <span class="k">def</span> <span class="nf">topologicalSort</span><span class="p">(</span><span class="n">numCourses</span><span class="p">,</span> <span class="n">prerequisites</span><span class="p">):</span>
     <span class="n">lst</span> <span class="o">=</span> <span class="p">[[]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">numCourses</span><span class="p">)]</span>
     <span class="n">indegree</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">numCourses</span><span class="p">)]</span>
@@ -15167,7 +15167,7 @@ This can also be used to see if there is a loop in a graph
                 <span class="n">stack</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
             <span class="n">indegree</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">-=</span> <span class="mi">1</span>
     <span class="k">return</span> <span class="n">sortedList</span>
-<span class="n">topologicalSort</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="n">nodes</span><span class="p">)</span>
+<span class="n">topologicalSort</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="n">edges</span><span class="p">)</span>
 </pre></div>
 
      </div>
@@ -16330,7 +16330,34 @@ N: Number of the nodes, E: the number of the edges</p>
 </div>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<div id="greedy"></div><h1 id="Greedy-Method">Greedy Method<a class="anchor-link" href="#Greedy-Method">&#182;</a></h1><p><a href="#content">top</a></p>
+<div id="backtracking"></div><h1 id="Backtracking">Backtracking<a class="anchor-link" href="#Backtracking">&#182;</a></h1><p><a href="#content">top</a></p>
+
+</div>
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>Smilar to dynamic programming, but back tracking is used for</p>
+<ul>
+<li>return all the solutions</li>
+<li>return a VALID soultion amongst all solutions</li>
+</ul>
+<p>In backtracking there can be multiple solutions</p>
+<p><br></p>
+<p>There are two steps to backtracking:</p>
+<ol>
+<li>Add: Updating the situation</li>
+<li>Decision: Validating teh situation<ul>
+<li>True: Recursion: Going into the next step</li>
+<li>False: Remove: Removing the current state</li>
+</ul>
+</li>
+</ol>
+
+</div>
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<div id="greedy"></div><h1 id="Greedy">Greedy<a class="anchor-link" href="#Greedy">&#182;</a></h1><p><a href="#content">top</a></p>
 
 </div>
 </div>
