@@ -12,7 +12,8 @@ For more details about each algorithm, check the notes.
 
 ## Table of Content
 
-- [](./)
+- [Sort](./Sort)
+    - [Merge Sort](./Sort/MergeSort)
 
 
 
